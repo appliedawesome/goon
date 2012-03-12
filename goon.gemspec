@@ -17,6 +17,5 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rdoc', '~> 3.8')
   s.add_development_dependency('rspec', '~> 2.8.0')
   s.add_development_dependency('coco', '~> 0.6')
-  s.add_development_dependency('cucumber', '~> 1.1.9')
   s.add_development_dependency('mocha', '~> 0.10.5')
 end
