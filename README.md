@@ -2,8 +2,15 @@
 
 Goon is a minion that pulls off heists
 
+## Release Notes ##
+
+* 0.0.1 - Initial release. Basically usable and spec'd, but probably has some
+naive implementation.
+
+## Goons? ##
+
 That is, a goon object, being taught the proper competencies, will pull off a
-valid ceist and remember facts related to the process.
+valid Heist and remember facts related to the process.
 
 ### .new ###
 
