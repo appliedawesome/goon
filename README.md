@@ -79,6 +79,9 @@ competency can be pretty much any object so long as it fits the following:
 * Has a name method that returns a non-empty string
 * Has a body method that returns a non-empty string
 
+If you would like to use our reference Competency, it lives in goon/competency.
+The same caveats (and then some) apply to this as do to our reference Heist.
+
 When a Goon learns a Competency, the Goon in question gains an equivalent
 instance method to said Competency. So, say that we have a Competency named
 "hello" with the following body:
