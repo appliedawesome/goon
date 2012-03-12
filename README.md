@@ -111,6 +111,7 @@ learning the Competency. Aside from emptyness, we don't really do any checking
 on this, but take our word that you absolutely want this to be valid Ruby.
 
 ## Example ##
+
 <pre>
 require 'goon'
 require 'goon/competency'
