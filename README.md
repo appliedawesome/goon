@@ -4,7 +4,7 @@ Goon is a minion that performs tasks
 
 ## Release Notes ##
 
-* 0.0.3 - 
+* 0.0.3 - Renamed "Heist" to "Task," as that makes more sense.
 * 0.0.2 - For example, our naivite caused us to think that we could cut a gem without jumping through hoops.
 * 0.0.1 - Initial release. Basically usable and spec'd, but probably has some
 naive implementation.
