@@ -1,12 +1,12 @@
 require 'goon/version'
 
 class Goon
-  attr_reader :competencies, :heist, :facts
+  attr_reader :competencies, :task, :facts
 
   def initialize(options = {})
     competencies = options[:competencies] || []
     @competencies = []
-    @heist = options[:heist]
+    @task = options[:task]
     @facts = options[:facts] || {}
     learn_competencies(competencies)
   end
@@ -52,7 +52,7 @@ class Goon
   end
 
   def run
-    instance_eval @heist.body
+    instance_eval @task.body
     @facts
   end
 end
