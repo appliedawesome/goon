@@ -2,13 +2,13 @@ require File.join([File.dirname(__FILE__), 'lib', 'goon', 'version.rb'])
 spec = Gem::Specification.new do |s|
   s.name = 'goon'
   s.version = Goon::VERSION
-  s.author = 'Dennis Walters'
-  s.email = 'pooster@gmail.com'
-  s.homepage = 'https://github.com/ess/goon'
+  s.authors = ['Applied Awesome', 'Dennis Walters']
+  s.email = 'hi@appliedawesome.com'
+  s.homepage = 'https://github.com/appliedawesome/goon'
   s.platform = Gem::Platform::RUBY
   s.summary = 'A loyal lackey'
   s.description = <<-EOF
-  Goon is a minion that pulls off Heists
+  Goon is a minion that performs Tasks
   EOF
   s.files = Dir.glob('lib/**/*.rb') + %w(README.md)
   s.require_paths << 'lib'

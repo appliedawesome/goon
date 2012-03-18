@@ -1,36 +1,37 @@
 ## Goon ##
 
-Goon is a minion that pulls off heists
+Goon is a minion that performs tasks
 
 ## Release Notes ##
 
+* 0.0.3 - Renamed "Heist" to "Task," as that makes more sense.
 * 0.0.2 - For example, our naivite caused us to think that we could cut a gem without jumping through hoops.
 * 0.0.1 - Initial release. Basically usable and spec'd, but probably has some
 naive implementation.
 
 ## Goons? ##
 
-That is, a goon object, being taught the proper competencies, will pull off a
-valid Heist and remember facts related to the process.
+That is, a goon object, being taught the proper competencies, will perform a
+valid Task and remember facts related to the process.
 
 ### .new ###
 
-Creating a Goon is pretty easy, but a Goon created without a Heist is just
+Creating a Goon is pretty easy, but a Goon created without a Task is just
 about worthless. The following will actually do the trick:
 
     goon = Goon.new
 
-The following, however, is a lot more useful (or would be if the Heist wasn't
+The following, however, is a lot more useful (or would be if the Task wasn't
 just terribly cordial):
 
     goon = Goon.new(
-      :heist => OpenStruct(
-        :name => 'Heist!!!',
+      :task => OpenStruct(
+        :name => 'Hello!!!',
         :body => 'puts "hello"'
       )
     )
 
-In addition to the :heist option, you can pass in an array of Competency objects
+In addition to the :task option, you can pass in an array of Competency objects
 with the :competencies option or a hash of facts with the :facts option.
 
 ### #learn_competency ###
@@ -55,40 +56,38 @@ A goon can forget facts that it has remembered. The forget method takes a fact n
 
 ### #run ###
 
-A goon can pull off a Heist. The run method takes no arguments, but returns the facts that it has remembered when it is done with the job.
+A goon can perform a Task. The run method takes no arguments, but returns the facts that it has remembered when it is done with the job.
 
-## Heists? ##
+## Tasks? ##
 
-Yeah. Heists. We like metaphors.
-
-A Heist, when it comes down, is any object that fits this bill:
+A Task, when it comes down, is any object that fits this bill:
 
 * Has a name method that returns a non-empty string
 * Has a body method that returns a non-empty string
 
-That said, goon/heist contains the Goon::Heist class that will absolutely always
+That said, goon/task contains the Goon::Task class that will absolutely always
 work with Goon, and it also validates itself on creation. Unfortunately, using
-this class to make a Heist means that exceptions will be raised if an invalid
+this class to make a Task means that exceptions will be raised if an invalid
 name or body is provided.
 
 ### name ###
 
-The name of a Heist is just that ... it is a (preferably) unique identifier.
+The name of a Task is just that ... it is a (preferably) unique identifier.
 
 ### body ###
 
-The body of a Heist is a snippet of code. Most typically, 
+The body of a Task is a snippet of code. Most typically, 
 
 ## Competencies? ##
 
-A Competency is a skill that one can teach one's goons. Much like a Heist, a
+A Competency is a skill that one can teach one's goons. Much like a Task, a
 competency can be pretty much any object so long as it fits the following:
 
 * Has a name method that returns a non-empty string
 * Has a body method that returns a non-empty string
 
 If you would like to use our reference Competency, it lives in goon/competency.
-The same caveats (and then some) apply to this as do to our reference Heist.
+The same caveats (and then some) apply to this as do to our reference Task.
 
 When a Goon learns a Competency, the Goon in question gains an equivalent
 instance method to said Competency. So, say that we have a Competency named
@@ -123,7 +122,7 @@ on this, but take our word that you absolutely want this to be valid Ruby.
 <pre>
 require 'goon'
 require 'goon/competency'
-require 'goon/heist'
+require 'goon/task'
 require 'json'
 
 competencies = []
@@ -142,7 +141,7 @@ competencies << Goon::Competency.new(
   :body => "puts options[:phrase]"
 )
 
-heist = Goon::Heist.new(
+task = Goon::Task.new(
   :name => 'The Stinky Teen Job',
   :body => <<-EOS 
   hello
@@ -154,17 +153,17 @@ heist = Goon::Heist.new(
   EOS
 )
 
-my_goon = Goon.new(:competencies => competencies, :heist => heist)
-puts "## Running the '#{heist.name}' heist ..."
+my_goon = Goon.new(:competencies => competencies, :task => task)
+puts "## Running the '#{task.name}' task ..."
 goon_results = my_goon.run
-puts "## Finished the '#{heist.name}' heist"
+puts "## Finished the '#{task.name}' task"
 
 # Since the goon was not instructed to remember anything, an empty hash is
 # returned.
 
-puts "## '#{heist.name}' Results: #{goon_results.to_json}\n"
+puts "## '#{task.name}' Results: #{goon_results.to_json}\n"
 
-heist = Goon::Heist.new(
+task = Goon::Task.new(
   :name => 'Remember Remember',
   :body => <<-EOS
   puts "remembering the date"
@@ -174,15 +173,15 @@ heist = Goon::Heist.new(
   EOS
 )
 
-my_goon = Goon.new(:heist => heist)
+my_goon = Goon.new(:task => task)
 
-puts "## Running the '#{heist.name}' heist ..."
+puts "## Running the '#{task.name}' task ..."
 
 goon_results = my_goon.run
 
-puts "## Finished the '#{heist.name}' heist"
+puts "## Finished the '#{task.name}' task"
 
 # Since the goon was told to remember things, we get back a non-empty hash.
 
-puts "## '#{heist.name}' Results: #{goon_results.to_json}"
+puts "## '#{task.name}' Results: #{goon_results.to_json}"
 </pre>

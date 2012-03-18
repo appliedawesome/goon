@@ -20,23 +20,23 @@ describe Goon do
     end
   end
 
-  describe '#heist' do
+  describe '#task' do
     it "is a reader" do
-      Goon.new.should respond_to(:heist)
+      Goon.new.should respond_to(:task)
     end
 
-    context "when the Goon has been given a Heist" do
-      it "conforms to the Heist API" do
-        heist = Goon.new(:heist => OpenStruct.new(:name => 'blah', :body => 'poop')).heist
-        heist.should respond_to(:name)
-        heist.should respond_to(:body)
-        heist.body.should be_a(String)
+    context "when the Goon has been given a Task" do
+      it "conforms to the Task API" do
+        task = Goon.new(:task => OpenStruct.new(:name => 'blah', :body => 'poop')).task
+        task.should respond_to(:name)
+        task.should respond_to(:body)
+        task.body.should be_a(String)
       end
     end
 
-    context "when the Goon has not been given a Heist" do
+    context "when the Goon has not been given a task" do
       it "is nil" do
-        Goon.new.heist.should be_nil
+        Goon.new.task.should be_nil
       end
     end
   end
@@ -130,17 +130,17 @@ describe Goon do
 
   describe '#run' do
     before(:each) do
-      @heist = OpenStruct.new(
+      @task = OpenStruct.new(
         :name => "Blah ... Poop ...",
         :body => <<-EOS
           remember :blah => 'poop'
         EOS
       )
-      @goon = Goon.new(:heist => @heist)
+      @goon = Goon.new(:task => @task)
     end
 
-    it "should run the heist" do
-      @goon.expects(:instance_eval).with(@heist.body)
+    it "should run the task" do
+      @goon.expects(:instance_eval).with(@task.body)
       @goon.run
     end
 
