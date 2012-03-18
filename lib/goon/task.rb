@@ -1,7 +1,7 @@
 require 'goon'
 
-class Goon::Heist
-  class InvalidHeist < Exception
+class Goon::Task
+  class InvalidTask < Exception
   end
 
   attr_reader :name, :body
@@ -28,12 +28,12 @@ class Goon::Heist
   private
 
   def validate_name!
-    raise InvalidHeist, "name cannot be nil" if @name.nil?
-    raise InvalidHeist, "name cannot be blank" if @name.gsub(/\s+/, '').empty?
+    raise InvalidTask, "name cannot be nil" if @name.nil?
+    raise InvalidTask, "name cannot be blank" if @name.gsub(/\s+/, '').empty?
   end
 
   def validate_body!
-    raise InvalidHeist, "body cannot be nil" if @body.nil?
-    raise InvalidHeist, "body cannot be blank" if @body.gsub(/\s+/, '').empty?
+    raise InvalidTask, "body cannot be nil" if @body.nil?
+    raise InvalidTask, "body cannot be blank" if @body.gsub(/\s+/, '').empty?
   end
 end
